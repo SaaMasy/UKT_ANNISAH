@@ -53,7 +53,6 @@ async function loadKategori() {
     $("#tabelKategori").innerHTML = daftarKategori.map(k => `
     <tr><td>#${k.id_kategori}</td><td class="font-bold">${k.nama_kategori}</td>
     <td>${k.deskripsi || "-"}</td><td>
-    <button class="text-blue-700 font-bold mr-2" onclick="editKategori(${k.id_kategori})">Edit</button>
     <button class="text-pink-600 font-bold" onclick="hapusKategori(${k.id_kategori})">Hapus</button></td></tr>
   `).join("") || `<tr><td colspan="4">Belum ada kategori.</td></tr>`;
 }
@@ -205,8 +204,8 @@ window.kembalikan = async (id) => {
 $("#btnKembali").addEventListener("click", () => showPage("peminjaman"));
 
 document.addEventListener("DOMContentLoaded", () => {
-  const today = new Date().toISOString().slice(0, 10);
-  const input = document.querySelector('[name="tanggal_pinjam"]');
-  if (input) input.value = today;
+    const today = new Date().toISOString().slice(0, 10);
+    const input = document.querySelector('[name="tanggal_pinjam"]');
+    if (input) input.value = today;
 });
 refreshAll();

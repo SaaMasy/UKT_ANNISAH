@@ -76,6 +76,7 @@ app.post("/api/kategori", async (req, res) => {
   }
 });
 
+/*
 app.put("/api/kategori/:id", async (req, res) => {
   try {
     const { nama_kategori, deskripsi } = req.body;
@@ -91,6 +92,7 @@ app.put("/api/kategori/:id", async (req, res) => {
     res.status(500).json({ pesan: err.message });
   }
 });
+*/
 
 app.delete("/api/kategori/:id", async (req, res) => {
   try {
