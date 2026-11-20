@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BRYXLab — Sistem Peminjaman Alat Praktik</title>
+  <title>Sistem Peminjaman Alat Praktik</title>
   <link rel="stylesheet" href="dist/output.css">
 </head>
+
 <body>
   <header class="bg-white border-b-2 border-black sticky top-0 z-20">
     <div class="max-w-7xl mx-auto px-5 py-4 flex flex-wrap items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <div class="w-11 h-11 bg-blue-300 border-2 border-black shadow-[3px_3px_0_#111] flex items-center justify-center text-xl">▣</div>
+      <div class="flex items-center justify-center gap-3">
         <div>
-          <h1 class="font-black text-xl tracking-tight">BRYXLab</h1>
-          <p class="text-xs text-gray-500">Sistem Peminjaman Alat Praktik SMK</p>
+          <h1 class="font-black text-xl tracking-tight">PEMINJAMAN ALAT LABORATORIUM SMKN 1 JENANGAN</h1>
+          <p class="text-xs text-gray-500">Sistem Peminjaman Alat Praktik</p>
         </div>
       </div>
       <nav class="flex gap-2 flex-wrap">
-        <button class="nav-btn neo-button bg-blue-300 px-4 py-2 font-bold text-sm" data-page="peminjaman">Peminjaman</button>
+        <button class="nav-btn neo-button bg-blue-300 px-4 py-2 font-bold text-sm"
+          data-page="peminjaman">Peminjaman</button>
         <button class="nav-btn neo-button bg-white px-4 py-2 font-bold text-sm" data-page="alat">Data Alat</button>
         <button class="nav-btn neo-button bg-white px-4 py-2 font-bold text-sm" data-page="kategori">Kategori</button>
       </nav>
@@ -28,74 +30,145 @@
     <section class="grid md:grid-cols-3 gap-4 mb-7">
       <article class="panel p-5 bg-white">
         <p class="text-xs font-black tracking-widest text-gray-500">TOTAL JENIS ALAT</p>
-        <div class="flex justify-between items-center mt-2"><strong id="statAlat" class="text-3xl">0</strong><span class="text-2xl bg-blue-100 p-2">⚙</span></div>
+        <div class="flex justify-between items-center mt-2"><strong id="statAlat" class="text-3xl">0</strong></div>
       </article>
       <article class="panel p-5 bg-white">
         <p class="text-xs font-black tracking-widest text-gray-500">SEDANG DIPINJAM</p>
-        <div class="flex justify-between items-center mt-2"><strong id="statPinjam" class="text-3xl text-amber-600">0</strong><span class="text-2xl bg-amber-100 p-2">◷</span></div>
+        <div class="flex justify-between items-center mt-2"><strong id="statPinjam" class="text-3xl text-amber-600">0</strong></div>
       </article>
       <article class="panel p-5 bg-white">
         <p class="text-xs font-black tracking-widest text-gray-500">TOTAL KATEGORI</p>
-        <div class="flex justify-between items-center mt-2"><strong id="statKategori" class="text-3xl text-emerald-600">0</strong><span class="text-2xl bg-emerald-100 p-2">◇</span></div>
+        <div class="flex justify-between items-center mt-2"><strong id="statKategori" class="text-3xl text-emerald-600">0</strong></div>
       </article>
     </section>
 
-    <!-- HALAMAN PEMINJAMAN -->
     <section id="page-peminjaman" class="page grid lg:grid-cols-[360px_1fr] gap-5">
       <article class="panel bg-white self-start">
-        <div class="panel-head p-4"><h2 class="font-black">CATAT PEMINJAMAN BARU</h2><p class="text-xs mt-1">Stok akan berubah otomatis melalui Trigger Database.</p></div>
+        <div class="panel-head p-4">
+          <h2 class="font-black">CATAT PEMINJAMAN BARU</h2>
+          <p class="text-xs mt-1">Stok akan berubah otomatis melalui Trigger Database.</p>
+        </div>
         <form id="formPeminjaman" class="p-5 space-y-3">
-          <label class="block text-sm font-bold">Nama Peminjam<input class="field mt-1" name="nama_peminjam" placeholder="Contoh: Dewi Rani" required></label>
-          <label class="block text-sm font-bold">Kelas<input class="field mt-1" name="kelas" placeholder="Contoh: XI RPL A" required></label>
-          <label class="block text-sm font-bold">Pilih Alat<select class="field mt-1" name="id_alat" id="pilihAlat" required><option value="">-- Pilih Alat --</option></select></label>
-          <label class="block text-sm font-bold">Jumlah Pinjam<input class="field mt-1" name="jumlah" type="number" min="1" value="1" required></label>
+          <label class="block text-sm font-bold">Nama Peminjam<input class="field mt-1" name="nama_peminjam"
+              placeholder="Contoh: Alden Al Firdaus" required></label>
+          <label class="block text-sm font-bold">Kelas<input class="field mt-1" name="kelas"
+              placeholder="Contoh: XI RPL A" required></label>
+          <label class="block text-sm font-bold">Pilih Alat<select class="field mt-1" name="id_alat" id="pilihAlat"
+              required>
+              <option value="">-- Pilih Alat --</option>
+            </select></label>
+          <label class="block text-sm font-bold">Jumlah Pinjam<input class="field mt-1" name="jumlah" type="number"
+              min="1" value="1" required></label>
           <div class="grid grid-cols-2 gap-3">
-            <label class="block text-sm font-bold">Tanggal Pinjam<input class="field mt-1" name="tanggal_pinjam" type="date" required></label>
-            <label class="block text-sm font-bold">Rencana Kembali<input class="field mt-1" name="tanggal_kembali" type="date"></label>
+            <label class="block text-sm font-bold">Tanggal Pinjam<input class="field mt-1" name="tanggal_pinjam"
+                type="date" required></label>
+            <label class="block text-sm font-bold">Rencana Kembali<input class="field mt-1" name="tanggal_kembali"
+                type="date"></label>
           </div>
-          <button class="neo-button bg-pink-500 text-white font-black w-full py-3" type="submit">+ SIMPAN PEMINJAMAN</button>
+          <button class="neo-button bg-pink-500 text-white font-black w-full py-3" type="submit">+ SIMPAN
+            PEMINJAMAN</button>
           <p id="pesanPinjam" class="text-sm font-bold" role="status"></p>
         </form>
       </article>
 
       <article class="panel bg-white min-w-0">
         <div class="panel-head p-4 flex flex-wrap justify-between items-center gap-2">
-          <div><h2 class="font-black">DAFTAR TRANSAKSI PEMINJAMAN</h2><p class="text-xs mt-1">Lihat detail atau proses pengembalian alat.</p></div>
-          <select id="filterStatus" class="field !w-auto"><option value="">Semua Status</option><option>Dipinjam</option><option>Dikembalikan</option><option>Terlambat</option></select>
+          <div>
+            <h2 class="font-black">DAFTAR TRANSAKSI PEMINJAMAN</h2>
+            <p class="text-xs mt-1">Lihat detail atau proses pengembalian alat.</p>
+          </div>
+          <select id="filterStatus" class="field !w-auto">
+            <option value="">Semua Status</option>
+            <option>Dipinjam</option>
+            <option>Dikembalikan</option>
+            <option>Terlambat</option>
+          </select>
         </div>
-        <div class="table-wrap"><table><thead><tr><th>Peminjam</th><th>Alat & Jumlah</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="tabelPeminjaman"><tr><td colspan="5">Memuat data...</td></tr></tbody></table></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Peminjam</th>
+                <th>Alat & Jumlah</th>
+                <th>Tanggal</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="tabelPeminjaman">
+              <tr>
+                <td colspan="5">Memuat data...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </article>
     </section>
 
-    <!-- HALAMAN DATA ALAT -->
     <section id="page-alat" class="page hidden-page">
       <article class="panel bg-white">
         <div class="panel-head p-4 flex justify-between items-center gap-3 flex-wrap">
-          <div><h2 class="font-black">INVENTARIS ALAT PRAKTIK</h2><p class="text-xs mt-1">Kelola daftar peralatan, stok, kondisi, dan lokasi.</p></div>
-          <button id="btnTambahAlat" class="neo-button bg-pink-500 text-white px-4 py-2 font-bold">+ Tambah Alat Baru</button>
+          <div>
+            <h2 class="font-black">INVENTARIS ALAT PRAKTIK</h2>
+            <p class="text-xs mt-1">Kelola daftar peralatan, stok, kondisi, dan lokasi.</p>
+          </div>
+          <button id="btnTambahAlat" class="neo-button bg-pink-500 text-white px-4 py-2 font-bold">+ Tambah Alat
+            Baru</button>
         </div>
-        <div class="table-wrap"><table><thead><tr><th>Nama Alat</th><th>Kategori</th><th>Lokasi</th><th>Kondisi</th><th>Stok</th><th>Aksi</th></tr></thead><tbody id="tabelAlat"></tbody></table></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nama Alat</th>
+                <th>Kategori</th>
+                <th>Lokasi</th>
+                <th>Kondisi</th>
+                <th>Stok</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="tabelAlat"></tbody>
+          </table>
+        </div>
       </article>
     </section>
 
-    <!-- HALAMAN KATEGORI -->
     <section id="page-kategori" class="page hidden-page grid lg:grid-cols-[360px_1fr] gap-5">
       <article class="panel bg-white self-start">
-        <div class="panel-head p-4"><h2 class="font-black">TAMBAH KATEGORI</h2><p class="text-xs mt-1">Kelompokkan alat berdasarkan jenis laboratorium.</p></div>
+        <div class="panel-head p-4">
+          <h2 class="font-black">TAMBAH KATEGORI</h2>
+          <p class="text-xs mt-1">Kelompokkan alat berdasarkan jenis laboratorium.</p>
+        </div>
         <form id="formKategori" class="p-5 space-y-3">
-          <label class="block text-sm font-bold">Nama Kategori<input class="field mt-1" name="nama_kategori" placeholder="Contoh: Komputer & Jaringan" required></label>
-          <label class="block text-sm font-bold">Deskripsi<textarea class="field mt-1" name="deskripsi" rows="4" placeholder="Keterangan singkat kategori..."></textarea></label>
+          <label class="block text-sm font-bold">Nama Kategori<input class="field mt-1" name="nama_kategori"
+              placeholder="Contoh: Komputer & Jaringan" required></label>
+          <label class="block text-sm font-bold">Deskripsi<textarea class="field mt-1" name="deskripsi" rows="4"
+              placeholder="Keterangan singkat kategori..."></textarea></label>
           <button class="neo-button bg-pink-500 text-white font-black w-full py-3">+ SIMPAN KATEGORI</button>
           <p id="pesanKategori" class="text-sm font-bold"></p>
         </form>
       </article>
       <article class="panel bg-white min-w-0">
-        <div class="panel-head p-4"><h2 class="font-black">DAFTAR KATEGORI ALAT</h2><p class="text-xs mt-1">Menghapus kategori juga menghapus alat di dalamnya sesuai ON DELETE CASCADE.</p></div>
-        <div class="table-wrap"><table><thead><tr><th>ID</th><th>Nama Kategori</th><th>Deskripsi</th><th>Aksi</th></tr></thead><tbody id="tabelKategori"></tbody></table></div>
+        <div class="panel-head p-4">
+          <h2 class="font-black">DAFTAR KATEGORI ALAT</h2>
+          <p class="text-xs mt-1">Menghapus kategori juga menghapus alat di dalamnya sesuai ON DELETE CASCADE.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nama Kategori</th>
+                <th>Deskripsi</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="tabelKategori"></tbody>
+          </table>
+        </div>
       </article>
     </section>
 
-    <!-- TAMPILAN NOTA / DETAIL -->
     <section id="receiptView" class="hidden-page max-w-2xl mx-auto mt-2">
       <div class="flex justify-between items-center mb-4 no-print">
         <button id="btnKembali" class="neo-button bg-white px-4 py-2 font-bold">← Kembali</button>
@@ -106,10 +179,10 @@
   </main>
 
   <footer class="text-center text-xs text-gray-500 py-8">
-    <strong class="tracking-widest text-gray-700">BRYXLAB — LABORATORIUM PRAKTIK SMK</strong>
+    <strong class="tracking-widest text-gray-700">LABORATORIUM PRAKTIK SMKN 1 JENANGAN</strong>
     <p class="mt-1">Sistem Informasi Peminjaman Alat Praktik</p>
   </footer>
 
-  <script src="js/app.js"></script>
 </body>
+<script src="js/app.js"></script>
 </html>

@@ -24,7 +24,7 @@ db.on("error", (err) => {
 
 app.get("/", (req, res) => {
   res.json({
-    pesan: "Backend BRYXLab berhasil berjalan!",
+    pesan: "API backend berhasil berjalan!",
     database: "PostgreSQL",
     endpoints: ["/api/dashboard", "/api/kategori", "/api/alat", "/api/peminjaman"],
   });
@@ -71,6 +71,22 @@ app.post("/api/kategori", async (req, res) => {
       [nama_kategori.trim(), deskripsi || null]
     );
     res.status(201).json({ pesan: "Kategori berhasil ditambahkan.", data: result.rows[0] });
+  } catch (err) {
+    res.status(500).json({ pesan: err.message });
+  }
+});
+
+app.put("/api/kategori/:id", async (req, res) => {
+  try {
+    const { nama_kategori, deskripsi } = req.body;
+    const result = await db.query(
+      `UPDATE kategori_alat
+       SET nama_kategori = $1, deskripsi = $2
+       WHERE id_kategori = $3 RETURNING *`,
+      [nama_kategori || null, deskripsi || null, req.params.id]
+    );
+    if (!result.rowCount) return res.status(404).json({ pesan: "Kategori tidak ditemukan." });
+    res.json({ pesan: "Data kategori berhasil diperbarui.", kategori: result.rows[0] });
   } catch (err) {
     res.status(500).json({ pesan: err.message });
   }
@@ -226,5 +242,5 @@ app.get("/api/peminjaman/:id", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server BRYXLab berjalan di http://localhost:${PORT}`);
+  console.log(`Server API backend berjalan di http://localhost:${PORT}`);
 });
